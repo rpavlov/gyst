@@ -1,0 +1,7 @@
+%div{:class=>"daily-section"}	
+	%h1 Daily Goals
+	%ul
+		- @daily_goals.each do |daily_goal| 
+			%li= daily_goal.content
+	= render :partial=>'form'
+
