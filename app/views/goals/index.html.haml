@@ -1,3 +1,5 @@
-= render :partial => 'daily_goals'
-= render :partial => 'todays_goals'
+%div{:id=>"daily-section"}	
+	= render :partial => 'daily_goals'
+%div{:id=>"today-section"}
+	= render :partial => 'todays_goals'
 

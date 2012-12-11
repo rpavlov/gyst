@@ -1,9 +1,9 @@
 Gyst::Application.routes.draw do
-  resources :goals
+  resources :goals do
+    get 'toggle_complete', :on=> :member
+  end  
 
   root to: 'goals#index'
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

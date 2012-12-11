@@ -1,7 +1,12 @@
-%div{:class=>"daily-section"}	
-	%h1 Daily Goals
-	%ul
-		- @daily_goals.each do |daily_goal| 
-			%li= daily_goal.content
-	= render :partial=>'form'
-
+%h1 Daily Goals
+%ul
+	- @daily_goals.each do |daily_goal| 
+		%li
+			- if daily_goal.complete?
+				= link_to image_tag("tick.png"), toggle_complete_goal_path(daily_goal), :remote => true , :id => "complete_link_#{daily_goal.id}" 
+			- else
+				= link_to image_tag("marquee.png"), toggle_complete_goal_path(daily_goal), :remote => true , :id => "complete_link_#{daily_goal.id}" 
+			= daily_goal.content
+			= link_to "Edit", edit_goal_path(daily_goal), :remote => true
+			|
+			= link_to "Destroy", daily_goal, :remote=>true, :confirm => 'Ya sure?',  :method => :delete

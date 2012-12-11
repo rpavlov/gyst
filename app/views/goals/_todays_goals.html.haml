@@ -1,3 +1,6 @@
-%div{:class=>"today-section"}
-	%h1 Today's Goals
-	= render :partial=>'form'
+%h1 Today's Goals
+%ul
+	- @todays_goals.each do |goal| 
+		%li
+			= goal.content
+			= link_to "Destroy", goal, :remote=>true, :confirm => 'Are you sure?',  :method => :delete

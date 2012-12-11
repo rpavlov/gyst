@@ -1,9 +1,15 @@
 class GoalsController < ApplicationController
 
-	def index
+	before_filter :load
+
+	def load
 		@goal = Goal.new
 		@daily_goals = Goal.where(:daily=>true)		
-		@todays_goals = Goal.where(:date_to_complete => Date.today)
+		#@todays_goals = Goal.where(:date_to_complete => Date.today)
+		@todays_goals = Goal.where(:daily=>false)
+	end
+
+	def index
 	end
 
 	def new
@@ -12,28 +18,40 @@ class GoalsController < ApplicationController
 
 	def create
 		@goal = Goal.new(params[:goal])
+		if @goal.save
+			flash[:notice] = "Created Goal"
 
-		respond_to do |format|
-		    if @goal.save
-		      format.html  { redirect_to(@goal,
-		                    :notice => 'New Goal was successfully created.') }
-		      format.json  { render :json => @goal,
-		                    :status => :created, :location => @goal }
-		    else
-		      format.html  { render :action => "new" }
-		      format.json  { render :json => @goal.errors,
-		                    :status => :unprocessable_entity }
+			load
+
+			respond_to do |format|
+				format.html { redirect_to @goal }
+				format.js
 		    end
 		end
 	end
 
-	def show
+	def edit
 		@goal = Goal.find(params[:id])
+	end
 
-		respond_to do |format|
-		    format.html  # show.html.erb
-		    format.json  { render :json => @goal }
+	def update	
+		@goal = Goal.find(params[:id])
+		if @goal.update_attributes(params[:goal])
+			flash[:notice] = "Successfully updated goal."
+			load
 		end
+	end
+
+	def toggle_complete
+		@goal = Goal.find(params[:id])
+		@goal.toggle!(:complete)
+	end
+
+
+	def destroy
+		@goal = Goal.find(params[:id])
+		@goal.destroy
+		flash[:notice] = "Successfully destroyed goal."
 	end
 
 end

@@ -1,0 +1,14 @@
+<% if @goal.errors.any? -%>
+  $("#flash_notice").hide(300);
+  $("#goal_errors").html("<%= escape_javascript(error_messages_for(@goal))%>");
+  $("#goal_errors").show(300);
+<% else -%>
+  $("#goal_errors").hide(300);
+  $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+  $("#flash_notice").show(300);
+
+   $("#form-input-field").val("");
+   
+  $("#today-section").html("<%= escape_javascript( render(:partial => "todays_goals") ) %>");
+  $("#daily-section").html("<%= escape_javascript( render(:partial => "daily_goals") ) %>");
+<% end -%>

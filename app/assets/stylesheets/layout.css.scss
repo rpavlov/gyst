@@ -1,8 +1,15 @@
-.daily-section, .today-section{
+#daily-section, #today-section{
 	padding: 1em;
-	display:inline-block;
+	display: block;
+	float:left;
+	margin: 1em;
+
+	ul{
+		list-style: none;
+	}
 }
 
-.daily-section{
+#daily-section{
 	border-right: 1px solid black;
+	padding-right: 2em;
 }
