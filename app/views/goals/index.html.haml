@@ -1,5 +1,13 @@
-%div{:id=>"daily-section"}	
-	= render :partial => 'daily_goals'
-%div{:id=>"today-section"}
-	= render :partial => 'todays_goals'
+%div{:class=>"row"}
+	%div{:class=>"col feature"}
+		%div{:id=>"efficiency-section", :class=>"box"}
+			= render :partial => 'efficiency'
+		%div{:id=>"daily-section",:class=>"box"}	
+			= render :partial => 'daily_goals'
+	%div{:class=>"col feature"}
+		%div{:id=>"today-section", :class=>"box"}
+			= render :partial => 'todays_goals'
+
+
+
 

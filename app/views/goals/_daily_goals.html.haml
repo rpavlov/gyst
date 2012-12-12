@@ -1,4 +1,6 @@
 %h1 Daily Goals
+= progress_bar(goals_complete_percentage(@completed_daily_goals, @daily_goals), :color => 'green', :rounded=>true) 
+%br
 %ul
 	- @daily_goals.each do |daily_goal| 
 		%li
@@ -6,7 +8,7 @@
 				= link_to image_tag("tick.png"), toggle_complete_goal_path(daily_goal), :remote => true , :id => "complete_link_#{daily_goal.id}" 
 			- else
 				= link_to image_tag("marquee.png"), toggle_complete_goal_path(daily_goal), :remote => true , :id => "complete_link_#{daily_goal.id}" 
-			= daily_goal.content
-			= link_to "Edit", edit_goal_path(daily_goal), :remote => true
-			|
-			= link_to "Destroy", daily_goal, :remote=>true, :confirm => 'Ya sure?',  :method => :delete
+			%div{:class=>"content"}= daily_goal.content
+			%div{:class=>"controls"}
+				= link_to image_tag("compose.png"), edit_goal_path(daily_goal), :remote => true 
+				= link_to image_tag("cross.png"), daily_goal, :remote=>true,  :method => :delete

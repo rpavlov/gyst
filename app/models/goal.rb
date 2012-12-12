@@ -1,3 +1,3 @@
 class Goal < ActiveRecord::Base
-	attr_accessible :complete, :content, :daily
+	attr_accessible :complete, :content, :daily, :start_time
 end

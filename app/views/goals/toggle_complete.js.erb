@@ -3,7 +3,7 @@
   $("#goal_errors").html("<%= escape_javascript(error_messages_for(@goal))%>");
   $("#goal_errors").show(300);
 <% else -%> 
-alert("hay");
+  $("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
   $("#today-section").html("<%= escape_javascript( render(:partial => "todays_goals") ) %>");
   $("#daily-section").html("<%= escape_javascript( render(:partial => "daily_goals") ) %>");
 <% end -%>

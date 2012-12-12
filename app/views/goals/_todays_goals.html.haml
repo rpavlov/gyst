@@ -1,6 +1,7 @@
 %h1 Today's Goals
+= progress_bar(goals_complete_percentage(@completed_todays_goals, @todays_goals), :color => 'blue', :rounded=>true) 
 %ul
 	- @todays_goals.each do |goal| 
 		%li
-			= goal.content
-			= link_to "Destroy", goal, :remote=>true, :confirm => 'Are you sure?',  :method => :delete
+			= render :partial => 'goal', :object=>goal
+

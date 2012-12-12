@@ -1,15 +1,59 @@
-#daily-section, #today-section{
-	padding: 1em;
-	display: block;
-	float:left;
-	margin: 1em;
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+#daily-section, #today-section, #efficiency-section{
+	padding: 1em;
+	margin: 1em;
 	ul{
 		list-style: none;
+		li{
+			margin: 0.5em;
+			
+			.content{
+				display:inline-block;
+				padding: 0 0.5em;
+			}
+
+			.controls{
+				float:right;
+			}
+		}
 	}
 }
 
+
 #daily-section{
-	border-right: 1px solid black;
 	padding-right: 2em;
 }
+
+#calendar {
+	margin: 2em 0;
+	td{
+		height: 7em; 
+		width: 5em ;
+	}
+}
+
+.box{
+	background: white;
+	border: 1px solid #CCC;
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 3px 5px rgba(0,0,0,.25);
+	box-shadow: 0 3px 5px rgba(0, 0, 0, .25);
+}
+
+#bar-container{
+	background: #A0A0A0;
+	
+}
+
+.rounded_bar_container{
+	height: 100% !important;
+}
+
+.vertical{
+	-webkit-transform:rotate(-90deg);
+	-moz-transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg);
+	-o-transform:rotate(-90deg);
+}
+

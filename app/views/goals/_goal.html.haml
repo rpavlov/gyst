@@ -1,0 +1,9 @@
+- if goal.complete?
+	= link_to image_tag("tick.png"), toggle_complete_goal_path(goal), :remote => true , :id => "complete_link_#{goal.id}" 
+- else
+	= link_to image_tag("marquee.png"), toggle_complete_goal_path(goal), :remote => true , :id => "complete_link_#{goal.id}" 
+%div{:class=>"content"}
+	= goal.content
+%div{:class=>"controls"}
+	= link_to image_tag("compose.png"), edit_goal_path(goal), :remote => true 
+	= link_to image_tag("cross.png"), goal, :remote=>true, :method => :delete

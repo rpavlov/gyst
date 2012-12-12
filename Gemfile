@@ -21,7 +21,8 @@ end
 
 gem "haml"
 gem 'jquery-rails'
-
+gem "simple_calendar", "~> 0.1.1"
+gem 'css3-progress-bar-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -7,8 +7,9 @@
   $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
   $("#flash_notice").show(300);
 
-   $("#form-input-field").val("");
-   
+  $("#form-input-field").val("");
+  
+  $("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
   $("#today-section").html("<%= escape_javascript( render(:partial => "todays_goals") ) %>");
   $("#daily-section").html("<%= escape_javascript( render(:partial => "daily_goals") ) %>");
 <% end -%>

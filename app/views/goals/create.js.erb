@@ -20,6 +20,7 @@
   /*Clear the entire form*/
   $("#form-input-field").val("");
 
+  $("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
   $("#today-section").html("<%= escape_javascript( render(:partial => "todays_goals") ) %>");
   $("#daily-section").html("<%= escape_javascript( render(:partial => "daily_goals") ) %>");
   

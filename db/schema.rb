@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209042631) do
+ActiveRecord::Schema.define(:version => 20121209011414) do
 
   create_table "goals", :force => true do |t|
     t.string   "content"
-    t.boolean  "complete",         :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "daily",            :default => false
-    t.datetime "date_to_complete"
+    t.boolean  "complete",   :default => false
+    t.boolean  "daily",      :default => false
+    t.datetime "start_time"
+    t.datetime "datetime"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end
