@@ -1,12 +1,12 @@
 %div{:class=>"row"}
 	%div{:class=>"col feature"}
 		%div{:id=>"efficiency-section", :class=>"box"}
-			= render :partial => 'efficiency'
+		//	= render :partial => 'efficiency'
 	%div{:class=>"col feature"}
 		%div{:id=>"daily-section",:class=>"box"}	
-			= render :partial => 'daily_goals'
+			= render :partial => 'daily_section'
 		%div{:id=>"today-section", :class=>"box"}
-			= render :partial => 'todays_goals'
+		//	= render :partial => 'dated_section'
 	%div{:class=>"col feature"}
 		%div{:id=>"header", :class=>"box"}
 			= render "layouts/header" 

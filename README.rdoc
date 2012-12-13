@@ -1,3 +1,7 @@
 == GYST
 
 Get your shit together!
+
+== ToDo
+
+- Add ability to attach Goals to future dates.

@@ -3,18 +3,26 @@ class GoalsController < ApplicationController
 	before_filter :load
 
 	def load
-		@goal = Goal.new
+		#@goal = Goal.new
 		@all_goals = Goal.all
-		@daily_goals = Goal.where(:daily=>true)		
-		#@todays_goals = Goal.where(:date_to_complete => Date.today)
-		@todays_goals = Goal.where(:daily=>false)
+		@daily_goals = Goal.daily
+		@todays_goals = Goal.today
 
 		@completed_daily_goals = @daily_goals.where(:complete=>true)
 		@completed_todays_goals = @todays_goals.where(:complete=>true)
-		@completed_goals = Goal.where(:complete=>true)
+		
+		unless !@daily_goals.nil? 
+			@daily_goals = Array.new
+		end
+
+		unless !@todays_goals.nil? 
+			@todays_goals = Array.new
+		end
+
 	end
 
 	def index
+		@goal = Goal.new
 		@selected_date = DateTime.now
 	end
 

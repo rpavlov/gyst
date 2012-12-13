@@ -1,0 +1,7 @@
+%div{:class=>"field"}
+			%label Daily
+			= f.radio_button :daily, true
+			%label Today
+			= f.radio_button :daily , false
+			%label Date
+			= f.radio_button :daily , false

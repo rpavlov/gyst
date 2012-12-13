@@ -1,5 +1,5 @@
 %div{:id=>"calendar"}
-	= calendar @todays_goals do |goal| 
+	= calendar @all_goals do |goal| 
 		%div
 			= progress_bar(goals_complete_percentage(@completed_goals, @all_goals), :color => 'purple', :rounded=>true, :tiny=>true) 
 			= progress_bar(goals_complete_percentage(@completed_todays_goals, @todays_goals), :color => 'blue', :rounded=>true, :tiny=>true) 

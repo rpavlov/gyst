@@ -1,8 +1,11 @@
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+body{
+	background: whiteSmoke;
+}
+
 #daily-section, #today-section, #efficiency-section{
-	padding: 1em;
-	margin: 1em;
+
 	ul{
 		list-style: none;
 		li{
@@ -33,7 +36,35 @@
 	}
 }
 
+#header{
+	background: #EFEFEF;
+	input[type="text"]{
+		width: 100%;
+		padding: 1em;
+		margin: 1em 0;
+	}
+
+	input[type="submit"]{
+		float:right;
+	}
+
+	form.new_goal{
+		margin:0;
+	}
+
+	.radio{
+		display:inline-block;
+		margin: 0 2em;
+		padding-left: 0;
+		input{
+			vertical-align: middle;
+		}
+	}
+}
+
 .box{
+	padding: 1em;
+	margin: 1em;
 	background: white;
 	border: 1px solid #CCC;
 	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .25);

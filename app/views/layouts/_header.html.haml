@@ -1,5 +1,13 @@
-%header{:class=>"header"}
-	%div{:id=>"flash_notice", :style=>"display:none"}
-	%h4 New Goal
-	%div{:id=>"goals-form"}
-		=render :partial=>"goals/form"
+%div{:id=>"flash_notice", :style=>"display:none"}
+%h4 New Goal
+%div{:id=>"goals-form"}
+	= form_for @goal, :remote => true do |f|
+		%div{:id=>"post_errors", :style=>"display:none"}
+		%span{:class=>"field"}= f.text_field :content, :id=>"form-input-field" 
+		%div{:class=>"field radio"}
+			= f.radio_button :daily, true
+			%label Daily
+		%div{:class=>"field radio"}
+			= f.radio_button :daily , false
+			%label Today
+		%span{:class=>"field"}= f.submit
