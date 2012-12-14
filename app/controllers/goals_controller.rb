@@ -3,22 +3,14 @@ class GoalsController < ApplicationController
 	before_filter :load
 
 	def load
-		#@goal = Goal.new
 		@all_goals = Goal.all
-		@daily_goals = Goal.daily
-		@todays_goals = Goal.today
 
-		@completed_daily_goals = @daily_goals.where(:complete=>true)
-		@completed_todays_goals = @todays_goals.where(:complete=>true)
+		@daily_goals = @all_goals.select{|g| g.daily==true}
+		@todays_goals = @all_goals.select{|g| g.daily==false}
+		@all_completed_goals = @all_goals.select{|g| g.complete==true}
 		
-		unless !@daily_goals.nil? 
-			@daily_goals = Array.new
-		end
-
-		unless !@todays_goals.nil? 
-			@todays_goals = Array.new
-		end
-
+		@completed_daily_goals = @daily_goals.select{|g| g.complete==true}
+		@completed_todays_goals = @todays_goals.select{|g| g.complete==true}
 	end
 
 	def index
@@ -27,7 +19,6 @@ class GoalsController < ApplicationController
 	end
 
 	def new
-		@goal = Goal.new
 	end
 
 	def create
@@ -76,6 +67,5 @@ class GoalsController < ApplicationController
 		load
 		flash[:notice] = "Successfully destroyed goal."
 	end
-
 
 end
