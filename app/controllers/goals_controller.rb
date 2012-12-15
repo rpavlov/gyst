@@ -4,6 +4,8 @@ class GoalsController < ApplicationController
 
 	def load
 		@all_goals = Goal.all
+		@daily_goalset = GoalSet.find_or_create_by_daily_and_start_time(true,DateTime.now.beginning_of_day);
+		@todays_goalset =  GoalSet.find_or_create_by_daily_and_start_time(false,DateTime.now.beginning_of_day);
 
 		@daily_goals = @all_goals.select{|g| g.daily==true}
 		@todays_goals = @all_goals.select{|g| g.daily==false}
