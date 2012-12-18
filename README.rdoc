@@ -2,6 +2,13 @@
 
 Get your shit together!
 
-== ToDo
+My canonical to-do app. 
 
-- Add ability to attach Goals to future dates.
+== Feature To-do
+
+-Add user sign in via devise
+
+== Technical To-do
+
+- Move :daily to Goal, thus enablign them to show up in every GoalSet. 
+- Figure out a more elegant want to reload records after toggling, deleting, updating.

@@ -1,4 +1,2 @@
-<% if @goalset.errors.any? -%>
-<% else -%>
-	$("#goals-form").html("<%= escape_javascript(render(:partial => "form"))%>");
-<% end -%>
+$("#goals-form").html("<%= escape_javascript(render(:partial => "form"))%>");
+$(".content-input-field").last().val("A new goal");

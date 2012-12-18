@@ -60,6 +60,10 @@ body{
 			vertical-align: middle;
 		}
 	}
+
+	select{
+		width:49.5%;
+	}
 }
 
 .box{
@@ -74,7 +78,6 @@ body{
 
 #bar-container{
 	background: #A0A0A0;
-	
 }
 
 .rounded_bar_container{
@@ -86,5 +89,6 @@ body{
 	-moz-transform:rotate(-90deg);
 	-ms-transform:rotate(-90deg);
 	-o-transform:rotate(-90deg);
+	margin-top: 1.5em;
 }
 

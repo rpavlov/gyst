@@ -2,6 +2,8 @@
 %h4 Goals
 %div{:id=>"goals-form"}
 	= form_for setup_goalset(@goalset), :as=>:goalset, :remote => true do |f|
+		= f.date_select :start_time, :order=>[:day, :month], :discard_year=>true
+
 		-if @goalset.errors.any?
 			%div{:id=>"post_errors"}
 				%h2= "#{pluralize(@goalset.errors.count, "error")} Errors"
@@ -10,5 +12,5 @@
 						%li= msg
 		= f.fields_for :goals do |ff|
 			%span{:class=>"field"}
-				= ff.text_field :content
+				= ff.text_field :content, :class=>"content-input-field"
 		%span{:class=>"field"}= f.submit

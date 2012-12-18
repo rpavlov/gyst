@@ -1,15 +1,21 @@
 - @goalsets.each do |dated_goalset|
 	%div{:id=>"goalset-container", :class=>"box"}
-		%h1 Goals for #{link_to dated_goalset.start_time.strftime("%A"), edit_goal_set_path(dated_goalset), :remote=>true}
+		%h1 Goals for #{link_to dated_goalset.start_time_readable, edit_goal_set_path(dated_goalset), :remote=>true}
+		= progress_bar(goals_complete_percentage(dated_goalset.completed_goals, dated_goalset.goals.length), :color => 'green', :rounded=>true) 
+		%br
 		%ul
 			- dated_goalset.goals.each do |goal| 
 				%li
 					- if goal.complete?
-						= link_to image_tag("tick.png"), {:controller=>"goal_sets", :action=>"toggle_complete", :id=>goal}, :method=>:post,:remote => true , :id => "complete_link_#{goal.id}" 
+						= link_to image_tag("tick.png"), {:controller=>"goal_sets", :action=>"toggle_complete", :id=>goal},
+							 :method=>:post,:remote => true , :id => "complete_link_#{goal.id}" 
 					- else
-						= link_to image_tag("marquee.png"), {:controller=>"goal_sets", :action=>"toggle_complete", :id=>goal}, :method=>:post, :remote => true , :id => "complete_link_#{goal.id}" 
+						= link_to image_tag("marquee.png"), {:controller=>"goal_sets", :action=>"toggle_complete", :id=>goal},
+							 :method=>:post, :remote => true , :id => "complete_link_#{goal.id}" 
 
 					%div{:class=>"content"}= goal.content
 					%div{:class=>"controls"}
-						= link_to image_tag("cross.png"), {:controller=>"goal_sets", :action=>"destroy_goal", :id=>goal}, :method=>:post, :remote=>true,  :method => :delete
+						= link_to image_tag("compose.png"), edit_goal_set_path(dated_goalset), :remote => true 
+						= link_to image_tag("cross.png"), {:controller=>"goal_sets", :action=>"destroy_goal", :id=>goal}, 
+							:method=>:post, :remote=>true,  :method => :delete
 

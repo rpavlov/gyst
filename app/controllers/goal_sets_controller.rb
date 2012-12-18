@@ -1,10 +1,12 @@
 class GoalSetsController < ApplicationController
 	include GoalsHelper
-	before_filter :load, :only => [:index, :create, :update, :toggle_complete]
-	after_filter :load, :only => :destroy_goal
+	before_filter :load, :only => [:index]
 
 	def load
 		@goalsets = GoalSet.all
+		@all_goals = Goal.all
+		@total_goal_count = @all_goals.count
+		@completed_goal_count = Goal.complete.count
 		#@daily_goalset = GoalSet.find_or_create_by_daily_and_start_time(true,DateTime.now.beginning_of_day);
 		#@todays_goalset =  GoalSet.find_or_create_by_daily_and_start_time(false,DateTime.now.beginning_of_day);
 		#@selected_goalset = @daily_goalset
@@ -17,11 +19,9 @@ class GoalSetsController < ApplicationController
 
 	def index
 		@goalset = GoalSet.new
-		@goalsets = GoalSet.all
 	end
 
 	def show
-		@goalset = GoalSet.find(params[:id])
 	end
 
 	def new
@@ -34,27 +34,36 @@ class GoalSetsController < ApplicationController
 
 	def create
 		@goalset = GoalSet.new(params[:goalset])
-		@goalset.start_time=DateTime.now
+		
 		if @goalset.save
 			flash[:notice] = "Successfully created GoalSet."
+		else
+			flash[:notice] = "A set of Goals already exist for this date!"
 		end
+		load
+	end
+
+	def update
+		@goalset = GoalSet.find(params[:id])
+
+		if @goalset.update_attributes params[:goalset] 
+			flash[:notice] = "Successfully updated Goals"
+		end
+
+		load
 	end
 
 	def toggle_complete
 		@goal = Goal.find(params[:id])
 		@goal.toggle!(:complete)
+		load
 	end
 
 	def destroy_goal
 		@goal = Goal.find(params[:id])
 		@goal.destroy
+		load
 	end
 
-	def update
-		@goalset = GoalSet.find(params[:id])
-		if @goalset.update_attributes params[:goalset] 
-			flash[:notice] = "Successfully updated GoalSet."
-		end
-	end
 
 end

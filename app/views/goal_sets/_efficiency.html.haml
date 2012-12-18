@@ -1,15 +1,5 @@
 %h1 Overall Efficiency
-//= progress_bar(goals_complete_percentage(@all_completed_goals, @all_goals), :color => 'purple', :rounded=>true) 
-//%label Daily goalset:
-//= @daily_goalsets
-//%label All GoalSets:
-//- @goalsets.each do |dated_goalset|
-//	=dated_goalset
-%h2 Goal Sets
-- @goalsets.each do |gs|
-	- if gs.daily?
-		%label Daily #{gs} #{gs.nil?}
-	- else
-		%label Today #{gs} #{gs.nil?}
+= progress_bar(goals_complete_percentage(@completed_goal_count, @total_goal_count), :color => 'purple', :rounded=>true) 
+= render :partial=>"calendar"
 
 	
