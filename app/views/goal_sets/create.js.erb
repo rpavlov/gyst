@@ -1,0 +1,7 @@
+<% if @goalset.errors.any? -%>
+  $("#flash_notice").hide(300);
+  $("#goalset_errors").html("<%= escape_javascript(error_messages_for(@goalset))%>");
+  $("#goalset_errors").show(300);
+<% else -%>
+$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
+<% end -%>

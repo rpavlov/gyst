@@ -1,7 +1,20 @@
-%div{:class=>"field"}
-			%label Daily
-			= f.radio_button :daily, true
-			%label Today
-			= f.radio_button :daily , false
-			%label Date
-			= f.radio_button :daily , false
+	-if @goalset.errors.any?
+			%div{:id=>"post_errors"}
+				%h2= "#{pluralize(@goalset.errors.count, "error")} Errors"
+				%ul
+					- @goalset.errors.full.message.each do |msg|
+						%li= msg
+		= f.fields_for :goals do |ff|
+			%span{:class=>"field"}
+				= ff.text_field :content
+
+
+
+
+
+				class GoalSet < ActiveRecord::Base
+  has_many :goals
+  attr_accessible :start_time, :daily, :goals_attributes
+  accepts_nested_attributes_for :goals, :allow_destroy => true
+  
+end

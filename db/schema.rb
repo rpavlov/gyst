@@ -21,12 +21,11 @@ ActiveRecord::Schema.define(:version => 20121212225928) do
   end
 
   create_table "goals", :force => true do |t|
+    t.integer  "goal_set_id"
     t.string   "content"
-    t.boolean  "daily",      :default => false
-    t.boolean  "complete",   :default => false
-    t.datetime "start_time"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "complete",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end

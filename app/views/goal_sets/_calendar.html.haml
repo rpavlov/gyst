@@ -1,0 +1,4 @@
+%div{:id=>"calendar"}
+	= calendar @goalsets do |goal_set| 
+		%div{:class=>"vertical"} 
+			= progress_bar(goals_complete_percentage(goal_set.completed_goals, goal_set.goals.length), :color => 'green', :rounded=>true, :tiny=>true)  

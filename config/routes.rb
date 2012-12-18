@@ -1,11 +1,13 @@
 Gyst::Application.routes.draw do
-  resources :goal_sets
-  resources :goals do
-    get 'toggle_complete', :on=> :member
-  end  
 
+resources :goal_sets do
+  resources :goals 
+end
+
+match "toggle_complete/:id" =>"goal_sets#toggle_complete"
+match "destroy_goal/:id" =>"goal_sets#destroy_goal"
   
-root to: 'goals#index'
+root to: 'goal_sets#index'
   #root to: 'goal_sets#index'
 
   # The priority is based upon order of creation:
