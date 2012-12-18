@@ -1,4 +1,8 @@
-	-if @goalset.errors.any?
+%div{:id=>"flash_notice", :style=>"display:none"}
+%h4 Goals
+%div{:id=>"goals-form"}
+	= form_for setup_goalset(@goalset), :as=>:goalset, :remote => true do |f|
+		-if @goalset.errors.any?
 			%div{:id=>"post_errors"}
 				%h2= "#{pluralize(@goalset.errors.count, "error")} Errors"
 				%ul
@@ -7,14 +11,4 @@
 		= f.fields_for :goals do |ff|
 			%span{:class=>"field"}
 				= ff.text_field :content
-
-
-
-
-
-				class GoalSet < ActiveRecord::Base
-  has_many :goals
-  attr_accessible :start_time, :daily, :goals_attributes
-  accepts_nested_attributes_for :goals, :allow_destroy => true
-  
-end
+		%span{:class=>"field"}= f.submit

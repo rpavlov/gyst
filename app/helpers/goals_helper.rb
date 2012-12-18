@@ -8,4 +8,9 @@ module GoalsHelper
 		end
 	end
 
+	def setup_goalset(goalset)
+		goalset.goals.build
+		goalset
+	end
+
 end

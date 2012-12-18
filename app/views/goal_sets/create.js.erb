@@ -1,0 +1,4 @@
+<% if @goalset.errors.any? -%>
+<% else -%>
+$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
+<% end -%>

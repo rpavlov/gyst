@@ -4,7 +4,7 @@ body{
 	background: whiteSmoke;
 }
 
-#daily-section, #today-section, #efficiency-section{
+#goalset-container, #efficiency-section{
 
 	ul{
 		list-style: none;
@@ -36,7 +36,7 @@ body{
 	}
 }
 
-#header{
+#goals-form{
 	background: #EFEFEF;
 	input[type="text"]{
 		width: 100%;

@@ -1,9 +1,9 @@
- <% if @goal.errors.any? -%>
-  $("#flash_notice").hide(300);
-  $("#goal_errors").html("<%= escape_javascript(error_messages_for(@goal))%>");
-  $("#goal_errors").show(300);
+<% if @goal.errors.any? -%>
+	$("#flash_notice").hide(300);
+	$("#goal_errors").html("<%= escape_javascript(error_messages_for(@goal))%>");
+	$("#goal_errors").show(300);
 <% else -%> 
-  $("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
-  $("#today-section").html("<%= escape_javascript( render(:partial => "todays_goals") ) %>");
-  $("#daily-section").html("<%= escape_javascript( render(:partial => "daily_goals") ) %>");
+	alert("goals");
+	$("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
+	$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
 <% end -%>

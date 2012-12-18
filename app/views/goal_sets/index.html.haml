@@ -1,15 +1,13 @@
 %div{:class=>"row"}
 	%div{:class=>"col feature"}
 		%div{:id=>"efficiency-section", :class=>"box"}
-		//	= render :partial => 'efficiency'
+			= render :partial => 'efficiency'
 	%div{:class=>"col feature"}
-		%div{:id=>"daily-section",:class=>"box"}	
-			= render :partial => 'daily_section'
-		%div{:id=>"today-section", :class=>"box"}
-		//	= render :partial => 'dated_section'
+		%div{:id=>"goalset-section"}
+			=render :partial => 'dated_goalset'
 	%div{:class=>"col feature"}
-		%div{:id=>"header", :class=>"box"}
-			= render "layouts/header" 
+		%div{:id=>"goals-form", :class=>"box"}
+			= render :partial=>"form" 
 
 
 
