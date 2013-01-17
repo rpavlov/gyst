@@ -1,14 +1,21 @@
 == GYST
 
-Get your shit together!
+Get your shit together; goals are dreams with deadlines.
 
-My canonical to-do app. 
+My canonical to-do app. This idea came from reading various productivity and self improvement articles and blog posts. Chief among them was
+http://www.kratosguide.com/16-habits-you-should-do-every-day/ and reading about Seinfeld's chaining method. The idea is to set small goals each
+day for productive, fulfilling activies that will pave the way for mastery of whatever you've set out to do. These goals could be exercise, meditation,
+listening to a lecture, practicing a language, etc... Every goal you complete improves your metrics, currently symbolised by Overall Efficiency and Daily Efficiency. I enjoy watching bars fill up; it motivates me to achieve even more the next day and use my time as productively as possible. 
 
 == Feature To-do
 
--Add user sign in via devise
+- Improve metrics with more detailed breakdown for particular weeks and months. 
+- Automatically remove past days.
+- Move :daily to Goal, thus enabling them to show up in every GoalSet and avoid having to readd the same goals. 
 
 == Technical To-do
-
-- Move :daily to Goal, thus enablign them to show up in every GoalSet. 
-- Figure out a more elegant want to reload records after toggling, deleting, updating.
+- Add error/warning/success flash messages
+- Devise isn't fully configured.
+- Figure out a more elegant want to reload records after toggling, deleting, updating. 
+- For Devise, set default_url_options in config/environments/ , i.e: config.action_mailer.default_url_options = { :host => 'localhost:3000' } for development.
+- Also for Devise, config.assets.initialize_on_precompile = false for heroku.

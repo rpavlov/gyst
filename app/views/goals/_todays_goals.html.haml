@@ -1,8 +1,0 @@
-%h1 Today's Goals
-= progress_bar(goals_complete_percentage(@completed_todays_goals, @todays_goals), :color => 'blue', :rounded=>true) 
-%br
-%ul
-	- @todays_goals.each do |goal| 
-		%li
-			= render :partial => 'goal', :object=>goal
-

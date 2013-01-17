@@ -1,9 +1,0 @@
-<% if @goal.errors.any? -%>
-	$("#flash_notice").hide(300);
-	$("#goal_errors").html("<%= escape_javascript(error_messages_for(@goal))%>");
-	$("#goal_errors").show(300);
-<% else -%> 
-	alert("goals");
-	$("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
-	$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
-<% end -%>

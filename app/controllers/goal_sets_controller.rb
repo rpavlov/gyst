@@ -1,27 +1,16 @@
 class GoalSetsController < ApplicationController
 	include GoalsHelper
-	before_filter :load, :only => [:index]
+	before_filter :authenticate_user!, :load, :only => [:index]
 
 	def load
 		@goalsets = GoalSet.all
 		@all_goals = Goal.all
 		@total_goal_count = @all_goals.count
 		@completed_goal_count = Goal.complete.count
-		#@daily_goalset = GoalSet.find_or_create_by_daily_and_start_time(true,DateTime.now.beginning_of_day);
-		#@todays_goalset =  GoalSet.find_or_create_by_daily_and_start_time(false,DateTime.now.beginning_of_day);
-		#@selected_goalset = @daily_goalset
-		#@daily_goals = @daily_goalset.goals.where(:daily=>true)
-		#@todays_goals = @daily_goalset.goals.where(:daily=>false)
-		
-		#@daily_goalset = GoalSet.daily.limit(1).first
-		#@dated_goalsets =  GoalSet.dated
 	end
 
 	def index
 		@goalset = GoalSet.new
-	end
-
-	def show
 	end
 
 	def new
@@ -30,6 +19,12 @@ class GoalSetsController < ApplicationController
 
 	def edit
 		@goalset = GoalSet.find(params[:id])
+	end
+
+	def destroy
+		@goalset = GoalSet.find(params[:id])
+		@goalset.destroy
+		load
 	end
 
 	def create
@@ -49,6 +44,9 @@ class GoalSetsController < ApplicationController
 		if @goalset.update_attributes params[:goalset] 
 			flash[:notice] = "Successfully updated Goals"
 		end
+		
+		#Ugly
+		@goalset = GoalSet.new
 
 		load
 	end
@@ -65,5 +63,8 @@ class GoalSetsController < ApplicationController
 		load
 	end
 
-
+	def add_goal
+		@goalset = GoalSet.find(params[:id])
+		@goalset.goals.build
+	end
 end
