@@ -1,4 +1,4 @@
-- @goalsets.each do |dated_goalset|
+- @current_goalsets.each do |dated_goalset|
 	%div{:id=>"goalset-container", :class=>"box"}
 		= link_to image_tag("cross.png"), {:controller=>"goal_sets", :action=>"destroy", :id=>dated_goalset}, 
 			:method=>:post, :remote=>true,  :method => :delete,  :class=>"destroy_goalset"

@@ -1,19 +1,26 @@
 <div class="devise">
-	<h2>Sign in</h2>
+	<div class="devise-inputs">
+		<h2>Sign in</h2>
 
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	  <div><%= f.label :email %><br />
-	  <%= f.email_field :email, :autofocus => true %></div>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <div><%= f.label :email %><br />
+		  <%= f.email_field :email, :autofocus => true %></div>
 
-	  <div><%= f.label :password %><br />
-	  <%= f.password_field :password %></div>
+		  <div><%= f.label :password %><br />
+		  <%= f.password_field :password %></div>
 
-	  <% if devise_mapping.rememberable? -%>
-	    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-	  <% end -%>
+		  <% if devise_mapping.rememberable? -%>
+		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		  <% end -%>
 
-	  <div><%= f.submit "Sign in" %></div>
-	<% end %>
+		  <div><%= f.submit "Sign in" %></div>
+		<% end %>
+	</div>
+	<p class="login-description">
+		Gyst idea is a tool that allows you to set small goals each day for productive, fulfilling activities that will pave the way for mastery of whatever you've set out to do. These goals could be exercise, meditation,	listening to a lecture, practicing a language, etc... Every goal you complete improves your metrics, currently symbolised by Overall Efficiency and Daily Efficiency. Look at those progress bars fill up! 
 
+		Remember, Goals are just dreams with deadlines!
+	</p>
+	<br/>
 	<%= render "devise/shared/links" %>
 </div>

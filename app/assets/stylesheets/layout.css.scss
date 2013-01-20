@@ -82,8 +82,9 @@ body{
 }
 
 .devise{
-	width:25em;
-	margin: 0 auto;
+	width:45em;
+	margin: 2em auto;
+	padding: 2em;
 }
 
 #bar-container{
@@ -108,4 +109,16 @@ body{
 
 .new-goal-button{
 	margin-left:0.15em;
+}
+
+.devise-inputs{
+	display:inline-block;
+	width:20em;
+	border-right: 1px dashed;
+}
+
+.login-description{
+	padding: 1em 0 0 1em;
+	display:inline-block;
+	width:20em;
 }
