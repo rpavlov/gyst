@@ -4,7 +4,7 @@ class GoalSetsController < ApplicationController
 
 	def load
 		@goalsets = GoalSet.all
-		@current_goalsets = GoalSet.all(:conditions=>["start_time >=:start_time", {:start_time=>Date.today}])
+		@current_goalsets = GoalSet.all(:conditions=>["created_at >=:start_time", {:start_time=>Date.yesterday}])
 		@total_goal_count = Goal.all.count
 		@completed_goal_count = Goal.complete.count
 	end
