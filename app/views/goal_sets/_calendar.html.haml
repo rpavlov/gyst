@@ -2,3 +2,5 @@
 	= calendar @goalsets do |goal_set| 
 		%div{:class=>"vertical"} 
 			= progress_bar(goals_complete_percentage(goal_set.completed_goals, goal_set.goals.length), :color => 'green', :rounded=>true, :tiny=>true)  
+	= link_to "Start fresh...", {:controller=>"goal_sets", :action=>"destroy_all_goalsets"}, 
+		:method=>:post, :remote=>true,  :confirm=>"This will remove all Goals, past and present."

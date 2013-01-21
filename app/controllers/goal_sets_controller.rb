@@ -63,6 +63,11 @@ class GoalSetsController < ApplicationController
 		load
 	end
 
+	def destroy_all_goalsets
+		GoalSet.delete_all
+		load
+	end
+
 	def add_goal
 		@goalset = GoalSet.find(params[:id])
 		@goalset.goals.build

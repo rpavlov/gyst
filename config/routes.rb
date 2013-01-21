@@ -9,7 +9,7 @@ end
 match "toggle_complete/:id" =>"goal_sets#toggle_complete"
 match "destroy_goal/:id" =>"goal_sets#destroy_goal"
 match "add_goal/:id" =>"goal_sets#add_goal"
-  
+match "destroy_all_goalsets" =>"goal_sets#destroy_all_goalsets"
 root to: 'goal_sets#index'
   #root to: 'goal_sets#index'
 
