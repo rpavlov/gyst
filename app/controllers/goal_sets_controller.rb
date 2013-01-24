@@ -3,6 +3,7 @@ class GoalSetsController < ApplicationController
 	before_filter :authenticate_user!, :load, :only => [:index]
 
 	def load
+		@goalsets = GoalSet.all
 		@total_goal_count = Goal.count
 		@completed_goal_count = Goal.complete.count
 		@current_goalsets = GoalSet.all(:conditions=>["created_at >=:start_time", {:start_time=>Date.yesterday}])
