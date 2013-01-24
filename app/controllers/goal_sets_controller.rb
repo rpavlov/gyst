@@ -3,18 +3,14 @@ class GoalSetsController < ApplicationController
 	before_filter :authenticate_user!, :load, :only => [:index]
 
 	def load
-		@goalsets = GoalSet.all
-		@current_goalsets = GoalSet.all(:conditions=>["created_at >=:start_time", {:start_time=>Date.yesterday}])
-		@total_goal_count = Goal.all.count
+		@total_goal_count = Goal.count
 		@completed_goal_count = Goal.complete.count
+		@current_goalsets = GoalSet.all(:conditions=>["created_at >=:start_time", {:start_time=>Date.yesterday}])
+
+		@goalset = GoalSet.new
 	end
 
 	def index
-		@goalset = GoalSet.new
-	end
-
-	def new
-		@goalset = GoalSet.new
 	end
 
 	def edit
@@ -23,8 +19,11 @@ class GoalSetsController < ApplicationController
 
 	def destroy
 		@goalset = GoalSet.find(params[:id])
-		@goalset.destroy
-		load
+
+		if @goalset.destroy
+			flash[:notice] = "Successfully destroyed GoalSet."
+			load	
+		end
 	end
 
 	def create
@@ -32,23 +31,17 @@ class GoalSetsController < ApplicationController
 		
 		if @goalset.save
 			flash[:notice] = "Successfully created GoalSet."
-		else
-			flash[:notice] = "A set of Goals already exist for this date!"
+			load
 		end
-		load
 	end
 
 	def update
 		@goalset = GoalSet.find(params[:id])
-
+		
 		if @goalset.update_attributes params[:goalset] 
 			flash[:notice] = "Successfully updated Goals"
+			load
 		end
-		
-		#Ugly
-		@goalset = GoalSet.new
-
-		load
 	end
 
 	def toggle_complete
@@ -64,7 +57,7 @@ class GoalSetsController < ApplicationController
 	end
 
 	def destroy_all_goalsets
-		GoalSet.delete_all
+		GoalSet.destroy_all
 		load
 	end
 

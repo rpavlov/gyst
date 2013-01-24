@@ -1,7 +1,7 @@
 <% if @goalset.errors.any? -%>
   $("#flash_notice").hide(300);
-  $("#goal_errors").html("<%= escape_javascript(error_messages_for(@goalset))%>");
-  $("#goal_errors").show(300);
+  $("#flash_notice").html("<%= escape_javascript(error_messages_for(@goalset))%>");
+  $("#flash_notice").show(300);
 <% else -%>
   $("#goals-form").html("<%= escape_javascript(render(:partial => "form"))%>");
   $("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");

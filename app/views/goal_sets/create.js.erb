@@ -1,8 +1,9 @@
 <% if @goalset.errors.any? -%>
-  $("#goalset_errors").show(300);
-  $("#goalset_errors").html("<%= escape_javascript(error_messages_for(@goalset))%>");
-	$("#flash_notice").hide(300);
+ 	$("#flash_notice").hide(300);
+	$("#goalset_errors").html("<%= escape_javascript(error_messages_for(@goalset))%>");
+	$("#goalset_errors").show(300);
 <% else -%>
-$("#goals-form").html("<%= escape_javascript(render(:partial => "form"))%>");
-$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
+	$("#goals-form").html("<%= escape_javascript(render(:partial => "form"))%>");
+	$("#goalset-section").html("<%= escape_javascript( render(:partial => "dated_goalset") ) %>");
+	$("#efficiency-section").html("<%= escape_javascript( render(:partial => "efficiency") ) %>");
 <% end -%>

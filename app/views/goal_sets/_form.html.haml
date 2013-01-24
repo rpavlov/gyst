@@ -2,14 +2,13 @@
 %h4 Goals
 %div{:id=>"goals-form"}
 	= form_for setup_goalset(@goalset), :as=>:goalset, :remote => true do |f|
-		= f.date_select :start_time, :order=>[:day, :month], :discard_year=>true
-
 		-if @goalset.errors.any?
-			%div{:id=>"post_errors"}
+			%div{:id=>"goalset_errors"}
 				%h2= "#{pluralize(@goalset.errors.count, "error")} Errors"
 				%ul
 					- @goalset.errors.full.message.each do |msg|
 						%li= msg
+		= f.date_select :start_time, :order=>[:day, :month], :discard_year=>true
 		= f.fields_for :goals do |ff|
 			%span{:class=>"field"}
 				= ff.text_field :content, :class=>"content-input-field"
